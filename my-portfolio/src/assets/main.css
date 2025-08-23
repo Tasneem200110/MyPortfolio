@@ -1,0 +1,13 @@
+@import './base.css';
+
+/* Minimal base styles for the portfolio (removed Vue template demo styles) */
+
+html, body { height: 100%; }
+
+#app {
+  margin: 0 auto;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Feel free to extend with your own global styles */

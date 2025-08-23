@@ -1,0 +1,79 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+debug.log*
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+shrinkwrap.yaml
+
+# Build files
+dist/
+dist-ssr/
+coverage/
+.next/
+.nuxt/
+.cache/
+.temp/
+.temp*
+.tmp/
+.tmp*
+
+# Testing
+/cypress/videos/
+/cypress/screenshots/
+/cypress/downloads/
+/cypress/fixtures/
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+*.sublime-*
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Cache
+.cache/
+.parcel-cache/
+.rts2_cache*
+
+# Local development
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Other
+*.local
+*.tsbuildinfo
+lerna-debug.log*
+
+# Local Netlify folder
+.netlify
