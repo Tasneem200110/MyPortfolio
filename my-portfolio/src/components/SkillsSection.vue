@@ -24,6 +24,10 @@
 <script setup>
 import { computed } from 'vue'
 
+// Import skill icons
+import photoshopIcon from '@/assets/photoshop.png'
+import illustratorIcon from '@/assets/illustrator.png'
+
 const props = defineProps({
   skills: {
     type: Array,
@@ -66,8 +70,8 @@ const props = defineProps({
 
       // Design & UI/UX
       { icon: 'fa-brands fa-figma', label: 'Figma', variant: 'outline' },
-      { source: '../src/assets/photoshop.png', label: 'Adobe Photoshop', variant: 'outline' },
-      { source: '../src/assets/illustrator.png', label: 'Adobe Illustrator', variant: 'outline' },
+      { source: photoshopIcon, label: 'Adobe Photoshop', variant: 'outline' },
+      { source: illustratorIcon, label: 'Adobe Illustrator', variant: 'outline' },
     ])
   }
 })

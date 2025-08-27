@@ -27,7 +27,7 @@ import { computed } from 'vue'
 const props = defineProps({
   imageSrc: {
     type: String,
-    default: '../src/assets/IMG_5263.png'
+    default: new URL('@/assets/IMG_5263.PNG', import.meta.url).href
   },
   imageAlt: { type: String, default: 'About illustration' }
 })

@@ -47,7 +47,7 @@ const props = defineProps({
   name: { type: String, default: 'Tasneem Mostafa' },
   location: { type: String, default: 'Giza, Egypt' },
   blurb: { type: String, default: `I’m Tasneem Mostafa, a passionate Full Stack .NET Developer with a strong background in C#, ASP.NET, SQL Server, and front-end frameworks. I enjoy building scalable, user-friendly applications and continuously enhancing my skills in backend and frontend development. With a business background in MIS, I bring a unique perspective that bridges technical solutions with real-world needs.` },
-  imageSrc: { type: String, default: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=max' },
+  imageSrc: { type: String, default: new URL('@/assets/hero section.jpg', import.meta.url).href },
   imageAlt: { type: String, default: 'Hero illustration' },
   links: {
     type: Object,
