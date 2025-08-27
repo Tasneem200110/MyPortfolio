@@ -37,12 +37,6 @@
 <script setup>
 import { computed } from 'vue'
 
-// Import project images
-import project1Img from '@/assets/Picture1.png'
-import project2Img from '@/assets/Picture2.png'
-import project3Img from '@/assets/Picture3.png'
-import project4Img from '@/assets/Picture4.png'
-
 const props = defineProps({
   projects: {
     type: Array,
@@ -56,7 +50,7 @@ const props = defineProps({
           'Developed responsive front-end for booking workflows and technician profiles.',
           'Integrated secure authentication and improved performance on mobile and desktop.'
         ],
-        image: project2Img,
+        image: '../src/assets/hero section.jpg',
         link: '#'
       },
       {
@@ -68,7 +62,7 @@ const props = defineProps({
           'Created with ASP.NET MVC including filtering, booking, and email confirmations.',
           'Built admin dashboard for events, reservations, and payments.'
         ],
-        image: project2Img,
+        image: '../src/assets/hero section.jpg',
         link: '#'
       },
       {
@@ -80,7 +74,7 @@ const props = defineProps({
           'Implemented payments with Stripe and secured APIs.',
           'Optimized SQL queries by ~30% for faster performance.'
         ],
-        image: project2Img,
+        image: '../src/assets/hero section.jpg',
         link: '#'
       },
       {
@@ -91,7 +85,7 @@ const props = defineProps({
         points: [
           'Added form validation and UX improvements, reducing data entry time by ~25%.'
         ],
-        image: project2Img,
+        image: '../src/assets/hero section.jpg',
         link: '#'
       }
     ])

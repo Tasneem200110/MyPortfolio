@@ -6,6 +6,13 @@ import AboutSection from '@/components/AboutSection.vue'
 import ProjectsSection from '@/components/ProjectsSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
+import project1Img from '@/assets/hero section.jpg'
+import project2Img from '@/assets/picture3.png'
+import project3Img from '@/assets/picture2.png'
+import project4Img from '@/assets/picture1.png'
+import project5Img from '@/assets/picture5.png'
+import heroImg from '@/assets/whatsapp.png'
+
 </script>
 
 <template>
@@ -13,7 +20,7 @@ import FooterSection from '@/components/FooterSection.vue'
     name="Tasneem Mostafa"
     location="Giza, Egypt"
     :links="{ github: 'https://github.com/Tasneem200110', linkedin: 'https://www.linkedin.com/in/tasneem-mostafa2001/', whatsapp: 'https://wa.me/01119360459' }"
-    image-src="../src/assets/whatsapp.png"
+    :image-src="heroImg"
     image-alt="Developer illustration"
   />
 
@@ -25,6 +32,7 @@ import FooterSection from '@/components/FooterSection.vue'
 <ExperienceSection />
 <AboutSection />
 <ProjectsSection
+  
     :projects="[
       {
         title: 'BoltFix – Smart Home Services Platform',
@@ -35,7 +43,7 @@ import FooterSection from '@/components/FooterSection.vue'
           'Responsive booking workflows and technician profiles',
           'Secure authentication and performance improvements'
         ],
-        image: '../src/assets/hero section.jpg',
+        image: project1Img,
         link: 'https://iti-grad-project.vercel.app/'
       },
       {
@@ -50,7 +58,7 @@ import FooterSection from '@/components/FooterSection.vue'
           'Reusable Components: Navigation bar, footer, and styled sections implemented across all pages',
           'Implemented a dynamic product catalog with real-time updates and search functionality'
         ],
-        image: '../src/assets/picture3.png',
+        image: project2Img,
         link: 'https://github.com/Tasneem200110/Tradex'
       },
       {
@@ -64,7 +72,7 @@ import FooterSection from '@/components/FooterSection.vue'
           'Reusable Components: Navigation bar, footer, and styled sections implemented across all pages.',
           'Implemented a dynamic product catalog with real-time updates and search functionality.'
         ],
-        image: '../src/assets/picture2.png',
+        image: project3Img,
         link: 'https://github.com/Tasneem200110/Rivo-Frontend'
       },
       {
@@ -76,7 +84,7 @@ import FooterSection from '@/components/FooterSection.vue'
           'Event filtering, booking, and email confirmations',
           'Admin dashboard for events, reservations, and payments'
         ],
-        image: '../src/assets/picture1.png',
+        image: project4Img,
         link: 'https://github.com/Tasneem200110/Camp-EntertainmentReservation'
       },
       {
@@ -88,7 +96,7 @@ import FooterSection from '@/components/FooterSection.vue'
           'Stripe payments and secure APIs',
           'SQL optimization ~30% faster'
         ],
-        image: '../src/assets/picture5.png',
+        image: project5Img,
         link: 'https://github.com/Tasneem200110/E-Commerce'
       },
       
