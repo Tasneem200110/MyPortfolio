@@ -71,20 +71,28 @@ const links = computed(() => props.links)
 .hero {
   background: linear-gradient(135deg, #ffffff 0%, #f8e9ec 40%, #f0f4ff 100%);
   padding: 80px 0 100px;
-  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
 }
 
 .hero-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin: 0 120px;
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 48px;
   align-items: center;
+}
+
+/* Desktop styles */
+@media (min-width: 375px) {
+  .hero-container {
+    margin: 0 20px !important;
+  }
+  .socials{
+    justify-content: center;
+  }
 }
 
 .left {
@@ -203,26 +211,11 @@ const links = computed(() => props.links)
 
 .right { display: grid; place-items: center; }
 
-.image-frame {
-  background: radial-gradient(120% 120% at 100% 0%, #e6f0ff 0%, #fde7ee 50%, #ffffff 100%);
-  padding: 20px;
-  border-radius: 24px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-  transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
-  transform-style: preserve-3d;
-  display: grid;
-  place-items: center;
-  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease;
-  will-change: transform, box-shadow;
-  animation: popIn 0.8s ease 0.4s both;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
 
 .hero-img {
   width: 100%;
   height: auto;
+  max-width: 400px;
   object-fit: contain;
   border-radius: 16px;
   will-change: transform;
@@ -230,21 +223,18 @@ const links = computed(() => props.links)
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.image-frame:hover {
-  transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-6px) rotate(-0.6deg);
-  box-shadow: 0 18px 52px rgba(0,0,0,0.14);
-}
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .hero {
-    padding: 100px 0 120px;
+    padding: 100px 0 20px;
   }
   
   .hero-container {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 60px;
     align-items: center;
+    margin: 0 20px !important;
   }
   
   .left {
@@ -271,11 +261,7 @@ const links = computed(() => props.links)
   }
 }
 
-@media (min-width: 1200px) {
-  .hero-container {
-    padding: 0 48px;
-  }
-}
+
 
 /* Animations */
 .fade-up {

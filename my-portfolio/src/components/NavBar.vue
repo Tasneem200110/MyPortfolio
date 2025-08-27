@@ -1,6 +1,6 @@
 <template>
-  <header class="navbar" role="banner">
-    <div class="navbar-spacer"></div>
+  <header class="navbar" :class="{ 'fixed-nav': isScrolled }" role="banner">
+    <div class="navbar-spacer" v-if="!isScrolled"></div>
     <nav class="nav-inner" aria-label="Main Navigation">
       <div class="left">
         <a href="#" class="logo" aria-hidden="true">
@@ -26,6 +26,7 @@
               @click="navClick('about')"
               :class="{ active: activeSection === 'about' }"
               :aria-current="activeSection === 'about' ? 'page' : null"
+              class="nav-link"
             >About Me</a>
           </li>
           <li>
@@ -34,6 +35,7 @@
               @click="navClick('skills')"
               :class="{ active: activeSection === 'skills' }"
               :aria-current="activeSection === 'skills' ? 'page' : null"
+              class="nav-link"
             >Skills</a>
           </li>
           <li>
@@ -42,6 +44,7 @@
               @click="navClick('projects')"
               :class="{ active: activeSection === 'projects' }"
               :aria-current="activeSection === 'projects' ? 'page' : null"
+              class="nav-link"
             >Projects</a>
           </li>
           <li>
@@ -50,16 +53,17 @@
               @click="navClick('contact')"
               :class="{ active: activeSection === 'contact' }"
               :aria-current="activeSection === 'contact' ? 'page' : null"
+              class="nav-link"
             >Contact Me</a>
           </li>
         </ul>
 
-        <div class="right">
-          <a class="resume" :href="resumeHref" target="_blank" download @click="closeMenu">
-            <span>Resume</span>
-            <i class="fa-solid fa-file-arrow-down text-white"></i>
-          </a>
-        </div>
+      </div>
+      <div class="right">
+        <a class="resume nav-link" :href="resumeHref" target="_blank" download @click="closeMenu">
+          <span>Resume</span>
+          <i class="fa-solid fa-file-arrow-down"></i>
+        </a>
       </div>
     </nav>
   </header>
@@ -76,6 +80,11 @@ const sectionIds = ['about','skills','projects','contact']
 const activeSection = ref('')
 const isMenuOpen = ref(false)
 const isMobile = ref(window.innerWidth < 1024)
+const isScrolled = ref(false)
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 10
+}
 
 // Toggle mobile menu
 const toggleMobileMenu = () => {
@@ -153,6 +162,7 @@ const onResizeHandler = () => {
 onMounted(async () => {
   await nextTick()
   updateActive()
+  window.addEventListener('scroll', handleScroll)
   
   // Add event listeners
   window.addEventListener('scroll', onScroll, { passive: true })
@@ -171,6 +181,7 @@ onBeforeUnmount(() => {
   // Clean up event listeners
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onResizeHandler)
+  window.removeEventListener('scroll', handleScroll)
   document.removeEventListener('click', handleClickOutside)
   
   // Reset body overflow
@@ -184,29 +195,35 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .navbar {
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.fixed-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: saturate(140%) blur(10px);
-  -webkit-backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
 }
 
 .navbar-spacer {
-  height: 80px;
   transition: height 0.3s ease;
 }
 
 .nav-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 80px;
+  margin: 0 120px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -221,9 +238,12 @@ onBeforeUnmount(() => {
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 1001;
-  padding: 8px;
   color: #0b0b0b;
   transition: transform 0.2s ease;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .mobile-menu-button:active {
@@ -260,37 +280,60 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   gap: 32px;
+  height: 100%;
 }
 
 /* Mobile menu styles */
 @media (max-width: 1023px) {
-  .navbar-spacer {
-    height: 70px;
+  .navbar{
+    margin: 0;
+    padding: 0;
+    position: relative;
   }
-  
   .nav-inner {
-    height: 70px;
-    padding: 0 20px;
+    margin: 0;
+    padding: 0;
+    position: relative;
   }
-  
   .mobile-menu-button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    color: #4b4b4b;
+    font-size: 24px;
   }
-  
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 280px;
+    right: -280px;
+    width: 200px;
     height: 100vh;
     background: white;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 90px 30px 40px;
+    padding: 80px 25px 30px;
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease-in-out;
     z-index: 1000;
     overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .nav-links.mobile-visible {
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
   }
   
   .nav-links.mobile-visible {
@@ -300,18 +343,71 @@ onBeforeUnmount(() => {
   .center {
     flex-direction: column;
     width: 100%;
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex !important;
+  }
+  
+  .center li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .center li:last-child {
+    border-bottom: none;
+  }
+  
+  .center a {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1rem;
+    font-weight: 400;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .center a:hover,
+  .center a.active {
+    color: #0b0b0b;
+    font-weight: 500;
   }
   
   .right {
     width: 100%;
-    justify-content: center;
   }
   
   .resume {
-    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: auto;
+    margin: 0 auto;
+  }
+  
+  .resume:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+  
+  .resume i {
+    font-size: 0.9em;
+    color: inherit;
   }
 }
 
@@ -324,14 +420,38 @@ onBeforeUnmount(() => {
 }
 
 .center a {
-  color: #4b4b4b;
-  font-weight: 500;
-  font-size: 15.5px;
   text-decoration: none;
+  transition: all 0.2s;
   position: relative;
-  padding: 8px 0;
-  transition: color 0.2s ease;
-  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 400;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.center a:hover,
+.center a.active {
+  color: #0b0b0b;
+  font-weight: 500;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.center a.active {
+  color: #181818;
+  font-weight: 500;
 }
 
 .center a::after {
@@ -348,18 +468,9 @@ onBeforeUnmount(() => {
   border-radius: 2px;
 }
 
-.center a:hover {
-  color: #0b0b0b;
-}
-
 .center a:hover::after,
 .center a.active::after {
   transform: scaleX(1);
-}
-
-.center a.active {
-  color: #0b0b0b;
-  font-weight: 600;
 }
 
 /* Tablet styles */
@@ -387,8 +498,7 @@ onBeforeUnmount(() => {
 
 .right {
   display: flex;
-  justify-content: flex-end;
-  margin-left: 16px;
+  justify-content: center;
 }
 
 .resume {
@@ -400,9 +510,9 @@ onBeforeUnmount(() => {
   background: #0b0b0b;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-size: 14.5px;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -410,6 +520,8 @@ onBeforeUnmount(() => {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  width: auto;
+  height: auto;
 }
 
 .resume::before {
@@ -417,8 +529,8 @@ onBeforeUnmount(() => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   background: linear-gradient(45deg, #111, #333);
   z-index: -1;
   transition: opacity 0.3s ease;
