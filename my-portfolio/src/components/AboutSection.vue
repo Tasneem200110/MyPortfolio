@@ -44,8 +44,6 @@ const imageAlt = computed(() => props.imageAlt)
 }
 
 .about-inner {
-  width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -82,6 +80,7 @@ const imageAlt = computed(() => props.imageAlt)
   display: grid; 
   place-items: center;
   order: -1;
+  justify-content: flex-start;
 }
 .image-frame {
   background: radial-gradient(120% 120% at 100% 0%, #e6f0ff 0%, #fde7ee 50%, #ffffff 100%);
@@ -95,7 +94,7 @@ const imageAlt = computed(() => props.imageAlt)
   will-change: transform, box-shadow;
   animation: popIn 0.8s ease 0.2s both;
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
   margin: 0 auto;
 }
 

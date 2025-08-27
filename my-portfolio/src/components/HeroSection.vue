@@ -68,29 +68,31 @@ const links = computed(() => props.links)
 </script>
 
 <style scoped>
+
 .hero {
   background: linear-gradient(135deg, #ffffff 0%, #f8e9ec 40%, #f0f4ff 100%);
-  padding: 80px 0 100px;
+  padding: 40px 0 !important;
   display: flex;
-  align-items: center;
+  align-items: center; 
+  justify-content: space-between;
+
 }
 
 .hero-container {
   width: 100%;
-  margin: 0 120px;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 120px;
   display: grid;
+  gap: 30px !important;
   grid-template-columns: 1fr;
-  gap: 48px;
   align-items: center;
+  box-sizing: border-box;
 }
 
-/* Desktop styles */
-@media (min-width: 375px) {
-  .hero-container {
-    margin: 0 20px !important;
-  }
-  .socials{
+/* Mobile styles */
+@media (max-width: 1023px) {
+
+  .socials {
     justify-content: center;
   }
 }
@@ -103,7 +105,7 @@ const links = computed(() => props.links)
 .right {
   order: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin-bottom: 32px;
 }
 
@@ -234,7 +236,7 @@ const links = computed(() => props.links)
     grid-template-columns: 1.1fr 0.9fr;
     gap: 60px;
     align-items: center;
-    margin: 0 20px !important;
+    margin: 0 20px ;
   }
   
   .left {
