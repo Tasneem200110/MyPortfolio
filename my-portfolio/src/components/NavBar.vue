@@ -22,21 +22,21 @@
         <ul class="center">
           <li>
             <a
-              href="#about"
-              @click="navClick('about')"
-              :class="{ active: activeSection === 'about' }"
-              :aria-current="activeSection === 'about' ? 'page' : null"
-              class="nav-link"
-            >About Me</a>
-          </li>
-          <li>
-            <a
               href="#skills"
               @click="navClick('skills')"
               :class="{ active: activeSection === 'skills' }"
               :aria-current="activeSection === 'skills' ? 'page' : null"
               class="nav-link"
             >Skills</a>
+          </li>
+          <li>
+            <a
+              href="#about"
+              @click="navClick('about')"
+              :class="{ active: activeSection === 'about' }"
+              :aria-current="activeSection === 'about' ? 'page' : null"
+              class="nav-link"
+            >About Me</a>
           </li>
           <li>
             <a

@@ -44,7 +44,8 @@ import heroImg from '@/assets/whatsapp.png'
           'Secure authentication and performance improvements'
         ],
         image: project1Img,
-        link: 'https://iti-grad-project.vercel.app/'
+        link: 'https://iti-grad-project.vercel.app/',
+        gitHubLink: 'https://github.com/ElieMaged/Iti-gradProject'
       },
       {
         title: 'Tradex – Corporate Business Website',
@@ -59,7 +60,7 @@ import heroImg from '@/assets/whatsapp.png'
           'Implemented a dynamic product catalog with real-time updates and search functionality'
         ],
         image: project2Img,
-        link: 'https://github.com/Tasneem200110/Tradex'
+        gitHubLink: 'https://github.com/Tasneem200110/Tradex'
       },
       {
         title: 'RIVO – Fashion E-Commerce Website',
@@ -73,7 +74,7 @@ import heroImg from '@/assets/whatsapp.png'
           'Implemented a dynamic product catalog with real-time updates and search functionality.'
         ],
         image: project3Img,
-        link: 'https://github.com/Tasneem200110/Rivo-Frontend'
+        gitHubLink: 'https://github.com/Tasneem200110/Rivo-Frontend'
       },
       {
         title: 'AdventureNest – Camp & Entertainment Reservation System',
@@ -85,7 +86,7 @@ import heroImg from '@/assets/whatsapp.png'
           'Admin dashboard for events, reservations, and payments'
         ],
         image: project4Img,
-        link: 'https://github.com/Tasneem200110/Camp-EntertainmentReservation'
+        gitHubLink: 'https://github.com/Tasneem200110/Camp-EntertainmentReservation'
       },
       {
         title: 'E‑Commerce Platform',
@@ -97,7 +98,7 @@ import heroImg from '@/assets/whatsapp.png'
           'SQL optimization ~30% faster'
         ],
         image: project5Img,
-        link: 'https://github.com/Tasneem200110/E-Commerce'
+        gitHubLink: 'https://github.com/Tasneem200110/E-Commerce'
       },
       
     ]"

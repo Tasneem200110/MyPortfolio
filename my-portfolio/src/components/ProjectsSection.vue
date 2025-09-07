@@ -22,8 +22,11 @@
             <ul class="bullets">
               <li v-for="(b, bi) in p.points" :key="bi">{{ b }}</li>
             </ul>
-            <div class="links" v-if="p.link">
-              <a class="ext" :href="p.link" target="_blank" rel="noopener" aria-label="Open project">
+            <div class="project-links">
+              <a class="ext" :href="p.gitHubLink" target="_blank" rel="noopener" aria-label="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a v-if="p.link" class="ext" :href="p.link" target="_blank" rel="noopener" aria-label="Open project">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -96,6 +99,22 @@ const items = computed(() => props.projects)
 </script>
 
 <style scoped>
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.project-links .ext {
+  color: var(--text);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.project-links .ext:hover {
+  color: var(--primary);
+}
+
 .projects {
   background: #0c0c0c;
   color: #eaeaea;
