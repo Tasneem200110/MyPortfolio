@@ -139,17 +139,34 @@ function updateActive() {
   const headerOffset = getHeaderOffset()
   let current = ''
   let bestDelta = Number.POSITIVE_INFINITY
+  
   for (const id of sectionIds) {
     const el = document.getElementById(id)
     if (!el) continue
-    const rectTop = el.getBoundingClientRect().top
-    const delta = Math.abs(rectTop - headerOffset)
-    if (rectTop <= headerOffset + 10 && delta < bestDelta) {
+    
+    const rect = el.getBoundingClientRect()
+    const elementTop = rect.top + window.scrollY
+    const elementBottom = elementTop + rect.height
+    const viewportMiddle = window.scrollY + (window.innerHeight / 2)
+    
+    // Check if the middle of the viewport is within this section
+    if (elementTop <= viewportMiddle && elementBottom >= viewportMiddle) {
+      current = id
+      break
+    }
+    
+    // If no section is in the middle, find the closest one
+    const delta = Math.abs(rect.top - headerOffset)
+    if (rect.top <= headerOffset + 10 && delta < bestDelta) {
       bestDelta = delta
       current = id
     }
   }
-  activeSection.value = current
+  
+  // Only update if we found a section
+  if (current) {
+    activeSection.value = current
+  }
 }
 
 // Initialize event handlers
